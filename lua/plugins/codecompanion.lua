@@ -1,3 +1,11 @@
+local hostname=vim.fn.hostname()
+--print(hostname)
+
+local ollama_model="qwen2.5-coder:3b"
+if hostname=="DESKTOP-JDJNPJU" then
+  ollama_model=""
+end
+
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -20,7 +28,7 @@ return {
             return require("codecompanion.adapters").extend("ollama", {
               schema = {
                 model = {
-                  default = "qwen2.5-coder:3b",
+                  default = ollama_model,
                 },
               },
             })
