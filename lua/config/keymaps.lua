@@ -4,6 +4,7 @@
 --
 function RightPopUp()
   Snacks.terminal.toggle(nil, {
+    count=42,
     cwd = LazyVim.root(),
     win = {
       position = "right",
@@ -12,9 +13,20 @@ function RightPopUp()
   })
 end
 
+function HorizontalPopUp()
+  Snacks.terminal.toggle(nil, {
+    count=43,
+    cwd = LazyVim.root(),
+    win = {
+      position = "bottom",
+      height = 0.25,
+    },
+  })
+end
+
 -- Open terminal splits
 vim.keymap.set("n", "<leader>tr", RightPopUp, { desc = "Terminal right-side" })
-vim.keymap.set("n", "<leader>th", "<cmd>split | terminal<cr>", { desc = "Terminal Horizontal" })
+vim.keymap.set("n", "<leader>th", HorizontalPopUp, { desc = "Terminal Horizontal" })
 vim.keymap.set("n", "<leader>tv", "<cmd>vsplit | terminal<cr>", { desc = "Terminal Vertical" })
 vim.keymap.set("n", "<leader>tt", "<cmd>tabnew | terminal<cr>", { desc = "Terminal Tab" })
 
