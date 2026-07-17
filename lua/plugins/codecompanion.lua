@@ -6,6 +6,16 @@ if hostname=="DESKTOP-JDJNPJU" then
   ollama_model=""
 end
 
+local codeCompanionActions={
+    {"<leader>aa", "<cmd>CodeCompanionChat<cr>", desc="AI Chat"},
+    {"<leader>ai", "<cmd>CodeCompanion<cr>", mode={"n","v"}, desc="AI Inline"},
+    {"<leader>at", "<cmd>CodeCompanionActions<cr>", mode={"n","v"}, desc="AI Actions"},
+}
+
+if not hostname=="DESKTOP-JDJNPJU" then
+  codeCompanionActions={};
+end
+
 return {
   {
     "olimorris/codecompanion.nvim",
@@ -36,10 +46,6 @@ return {
         },
       },
     },
-    keys = {
-      { "<leader>aa", "<cmd>CodeCompanionChat<cr>", desc = "AI Chat" },
-      { "<leader>ai", "<cmd>CodeCompanion<cr>", mode = { "n", "v" }, desc = "AI Inline" },
-      { "<leader>at", "<cmd>CodeCompanionActions<cr>", mode = { "n", "v" }, desc = "AI Actions" },
-    },
+    keys=codeCompanionActions,
   },
 }
